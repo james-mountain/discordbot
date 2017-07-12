@@ -1,6 +1,6 @@
 const Commando = require('discord.js-commando');
 
-module.exports = class MakePersonCommand extends Commando.Command {
+module.exports = class OutputPersonCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name:         "outputperson",
