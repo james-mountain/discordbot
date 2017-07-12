@@ -13,7 +13,8 @@ client.on('ready', () => {
 
 client.registry
     .registerGroups([
-        ["testing", "Test Commands"]
+        ["testing", "Test Commands"],
+        ["project", "Project Commands"]
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'));
