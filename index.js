@@ -11,10 +11,13 @@ client.on('ready', () => {
   console.log('Bot is ready.');
 });
 
+client.persons = []
+
 client.registry
     .registerGroups([
         ["testing", "Test Commands"],
-        ["project", "Project Commands"]
+        ["project", "Project Commands"],
+        ["various", "Various Commands"]
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'));

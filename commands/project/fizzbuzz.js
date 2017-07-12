@@ -32,7 +32,7 @@ module.exports = class FizzBuzzCommand extends Commando.Command {
 
     async run(msg, args) {
         let buildString = ""
-        for (var i = 1; i <= args.number; i++) {
+        for (let i = 1; i <= args.number; i++) {
             if (i % 3 == 0) {
                 buildString += args.fizz
             }

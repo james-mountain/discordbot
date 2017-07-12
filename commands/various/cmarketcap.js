@@ -5,7 +5,7 @@ module.exports = class CoinMarketCapCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name:         "coinprice",
-            group:        "project",
+            group:        "various",
             memberName:   "coinprice",
             description:  "Gets the USD price of a particular cryptocurrency.",
             args: [
