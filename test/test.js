@@ -12,7 +12,7 @@ describe("#discordbot", function() {
             assert.equal(fbstr, "1 | 2 | Fizz | 4 | Buzz | Fizz | 7 | 8 | Fizz | Buzz | 11 | Fizz | 13 | 14 | FizzBuzz | ");
             done();
         });
-    })
+    });
 
     describe("#gettoone", function() {
         it("getting to one from a number should return a series of steps", function(done) {
@@ -22,7 +22,7 @@ describe("#discordbot", function() {
             assert.equal(fbstr, "15, 5, 6, 2, 3, 1");
             done();
         });
-    })
+    });
 
     let client = {};
     client.persons = [];
@@ -37,7 +37,7 @@ describe("#discordbot", function() {
             assert.equal(client.persons.length, 1);
             done();
         });
-    })
+    });
 
     describe("#outputperson", function() {
         it("should be able to output an inserted persons info", function(done) {
@@ -48,7 +48,7 @@ describe("#discordbot", function() {
             assert.equal(fbstr, "Name: " + "John" + " Age: " + 30 + " Occupation: " + "Developer");
             done();
         });
-    })
+    });
 
     describe("#pokemondamagetypes", function() {
         it("normal attack versus steel rock pokemon", function(done) {
@@ -72,7 +72,7 @@ describe("#discordbot", function() {
             assert.equal(fbstr, 0.5);
             done();
         });
-    })
+    });
 
     describe("#square", function() {
         it("squaring 10 should return 100", function(done) {
@@ -83,5 +83,5 @@ describe("#discordbot", function() {
             assert.equal(fbstr, 100);
             done();
         });
-    })
+    });
 })
