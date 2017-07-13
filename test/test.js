@@ -127,4 +127,14 @@ describe("#discordbot", function() {
             });
         });
     });
+
+    describe("#rollthedice", function() {
+        it("rolling the dice should return a number between 1 and 6 (inclusive)", function(done) {
+            let fbstr = Util.rollTheDiceFunc();
+
+            assert.ok(fbstr >= 1);
+            assert.ok(fbstr <= 6);
+            done();
+        });
+    });
 })
