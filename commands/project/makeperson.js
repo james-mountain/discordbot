@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 
 module.exports = class MakePersonCommand extends Commando.Command {
     constructor(client) {
@@ -39,6 +39,6 @@ module.exports = class MakePersonCommand extends Commando.Command {
 
         this.client.persons[this.client.persons.length] = person;
 
-        return msg.reply("Created a person object.")
+        return msg.reply("Created a person object.");
     }
-};
+}

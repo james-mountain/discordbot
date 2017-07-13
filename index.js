@@ -1,19 +1,19 @@
-const Discord = require('discord.js');
-const Commando = require('discord.js-commando');
-const path = require('path');
-const token = require('./auth').token
+const Discord = require("discord.js");
+const Commando = require("discord.js-commando");
+const path = require("path");
+const token = require("./auth").token
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const fs = require('fs');
+const fs = require("fs");
 
 const client = new Commando.Client({
-    owner: '334612943230599168'
+    owner: "334612943230599168"
 });
 
-client.on('ready', () => {
-  console.log('Bot is ready.');
+client.on("ready", () => {
+    client.guilds.first().defaultChannel.send("I, DiscordBot, have joined the server! Ready to take commands.")
 });
 
-client.persons = []
+client.persons = [];
 client.typenames = [
     "normal",
     "steel",
@@ -43,21 +43,21 @@ function loadTypesFromFile() {
     for (let i = 0; i < typn.length; i++) {
         var url = "./typedata/" + typn[i] + ".json";
 
-        let data = JSON.parse(fs.readFileSync(url, 'utf8'))
+        let data = JSON.parse(fs.readFileSync(url, 'utf8'));
 
         var currepdmgrels = data.damage_relations;
         client.typemultipliers[i] = Array(typn.length).fill(1);
 
         currepdmgrels.half_damage_to.forEach(function(typ) {
-            client.typemultipliers[i][typn.findIndex(v => v === typ.name)] = 0.5;
+            client.typemultipliers[i][typn.findIndex((v) => v === typ.name)] = 0.5;
         })
 
         currepdmgrels.no_damage_to.forEach(function(typ) {
-            client.typemultipliers[i][typn.findIndex(v => v === typ.name)] = 0;
+            client.typemultipliers[i][typn.findIndex((v) => v === typ.name)] = 0;
         })
 
         currepdmgrels.double_damage_to.forEach(function(typ) {
-            client.typemultipliers[i][typn.findIndex(v => v === typ.name)] = 2;
+            client.typemultipliers[i][typn.findIndex((v) => v === typ.name)] = 2;
         })
     }
 }

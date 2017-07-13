@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 
 module.exports = class TestCommand extends Commando.Command {
     constructor(client) {
@@ -11,6 +11,6 @@ module.exports = class TestCommand extends Commando.Command {
     }
 
     async run(msg, args) {
-        return msg.reply("test!")
+        return msg.reply("test!");
     }
-};
+}

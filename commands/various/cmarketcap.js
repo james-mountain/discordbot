@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = class CoinMarketCapCommand extends Commando.Command {
@@ -30,12 +30,12 @@ module.exports = class CoinMarketCapCommand extends Commando.Command {
             let data = JSON.parse(request.responseText)
 
             if (data.error) {
-                msg.reply("Could not find coin.")
+                msg.reply("Could not find coin.");
             } else {
-                msg.reply("Current price of " + args.currency + " : $" + data[0].price_usd)
+                msg.reply("Current price of " + args.currency + " : $" + data[0].price_usd);
             }
         }
 
-        return msg.reply("Searching for price...")
+        return msg.reply("Searching for price...");
     }
-};
+}

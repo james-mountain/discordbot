@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 
 module.exports = class OutputPersonCommand extends Commando.Command {
     constructor(client) {
@@ -19,12 +19,12 @@ module.exports = class OutputPersonCommand extends Commando.Command {
     };
 
     async run(msg, args) {
-        let foundperson = this.client.persons.find(x => x.name === args.name);
+        let foundperson = this.client.persons.find((x) => x.name === args.name);
 
         if (foundperson) {
-            return msg.reply("Name: " + foundperson.name + " Age: " + foundperson.age + " Occupation: " + foundperson.occupation)
+            return msg.reply("Name: " + foundperson.name + " Age: " + foundperson.age + " Occupation: " + foundperson.occupation);
         } else {
-            return msg.reply("Could not find: " + args.name)
+            return msg.reply("Could not find: " + args.name);
         }
     }
-};
+}

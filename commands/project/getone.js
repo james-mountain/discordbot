@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 
 module.exports = class GetToOneCommand extends Commando.Command {
     constructor(client) {
@@ -22,11 +22,11 @@ module.exports = class GetToOneCommand extends Commando.Command {
         let input = args.number;
         let buildString = input + ", ";
         while (input != 1) {
-            if (input % 3 == 0) {
+            if (input % 3 === 0) {
                 input = input / 3;
-            } else if (input % 3 == 1) {
+            } else if (input % 3 === 1) {
                 input = input - 1;
-            } else if (input % 3 == 2) {
+            } else if (input % 3 === 2) {
                 input = input + 1;
             }
             buildString += input;
@@ -35,6 +35,6 @@ module.exports = class GetToOneCommand extends Commando.Command {
             }
         }
 
-        return msg.reply(buildString)
+        return msg.reply(buildString);
     }
-};
+}

@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = class WeatherCommand extends Commando.Command {
@@ -30,12 +30,12 @@ module.exports = class WeatherCommand extends Commando.Command {
             let data = JSON.parse(request.responseText)
 
             if (data.error) {
-                msg.reply("Could not find city.")
+                msg.reply("Could not find city.");
             } else {
-                msg.reply("Current weather of " + args.city + " : " + data.weather[0].description)
+                msg.reply("Current weather of " + args.city + " : " + data.weather[0].description);
             }
         }
 
-        return msg.reply("Searching for weather info...")
+        return msg.reply("Searching for weather info...");
     }
-};
+}

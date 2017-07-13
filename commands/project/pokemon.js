@@ -1,4 +1,4 @@
-const Commando = require('discord.js-commando');
+const Commando = require("discord.js-commando");
 
 module.exports = class PokemonCommando extends Commando.Command {
     constructor(client) {
@@ -32,11 +32,11 @@ module.exports = class PokemonCommando extends Commando.Command {
     };
 
     async run(msg, args) {
-        let typm = this.client.typemultipliers
-        let typna = this.client.typenames
+        let typm = this.client.typemultipliers;
+        let typna = this.client.typenames;
 
         function getMultiAttackDmgIndex(atktype, deftype) {
-            return typm[typna.findIndex(v => v === atktype)][typna.findIndex(v => v === deftype)];
+            return typm[typna.findIndex((v) => v === atktype)][typna.findIndex((v) => v === deftype)];
         }
 
         let multi = getMultiAttackDmgIndex(args.atktype, args.dmgtype);
@@ -44,6 +44,6 @@ module.exports = class PokemonCommando extends Commando.Command {
             multi *= getMultiAttackDmgIndex(args.atktype, args.dmgtype2);
         }
 
-        return msg.reply(multi + "x")
+        return msg.reply(multi + "x");
     }
-};
+}
