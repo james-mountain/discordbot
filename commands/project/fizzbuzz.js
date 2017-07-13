@@ -28,10 +28,10 @@ module.exports = class FizzBuzzCommand extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
-        let buildString = ""
+        let buildString = "";
         for (let i = 1; i <= args.number; i++) {
             if (i % 3 === 0) {
                 buildString += args.fizz;
@@ -48,4 +48,4 @@ module.exports = class FizzBuzzCommand extends Commando.Command {
 
         return msg.reply(buildString);
     }
-}
+};

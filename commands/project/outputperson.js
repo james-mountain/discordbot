@@ -16,7 +16,7 @@ module.exports = class OutputPersonCommand extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
         let foundperson = this.client.persons.find((x) => x.name === args.name);
@@ -27,4 +27,4 @@ module.exports = class OutputPersonCommand extends Commando.Command {
             return msg.reply("Could not find: " + args.name);
         }
     }
-}
+};

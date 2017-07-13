@@ -8,9 +8,9 @@ module.exports = class RollTheDiceCommand extends Commando.Command {
             memberName:   "rollthedice",
             description:  "Roll a dice.",
         });
-    };
+    }
 
     async run(msg, args) {
         return msg.reply(Math.floor((Math.random() * 6) + 1));
     }
-}
+};

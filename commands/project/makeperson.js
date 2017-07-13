@@ -28,7 +28,7 @@ module.exports = class MakePersonCommand extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
         let person = {};
@@ -41,4 +41,4 @@ module.exports = class MakePersonCommand extends Commando.Command {
 
         return msg.reply("Created a person object.");
     }
-}
+};

@@ -13,4 +13,4 @@ module.exports = class TestCommand extends Commando.Command {
     async run(msg, args) {
         return msg.reply("test!");
     }
-}
+};

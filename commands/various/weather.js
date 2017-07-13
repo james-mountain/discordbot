@@ -17,17 +17,17 @@ module.exports = class WeatherCommand extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
-        let url = "http://api.openweathermap.org/data/2.5/weather?q=" + args.city + "&appid=61e12b8fafc32ee19c827da95371aca8"
+        let url = "http://api.openweathermap.org/data/2.5/weather?q=" + args.city + "&appid=61e12b8fafc32ee19c827da95371aca8";
         let request = new XMLHttpRequest();
         request.open("GET", url);
-        request.responseType = 'json';
+        request.responseType = "json";
         request.send();
 
         request.onload = function() {
-            let data = JSON.parse(request.responseText)
+            let data = JSON.parse(request.responseText);
 
             if (data.error) {
                 msg.reply("Could not find city.");
@@ -38,4 +38,4 @@ module.exports = class WeatherCommand extends Commando.Command {
 
         return msg.reply("Searching for weather info...");
     }
-}
+};

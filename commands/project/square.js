@@ -16,9 +16,9 @@ module.exports = class SquareCommand extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
         return msg.reply(args.number * args.number);
     }
-}
+};

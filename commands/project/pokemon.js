@@ -29,7 +29,7 @@ module.exports = class PokemonCommando extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
         let typm = this.client.typemultipliers;
@@ -46,4 +46,4 @@ module.exports = class PokemonCommando extends Commando.Command {
 
         return msg.reply(multi + "x");
     }
-}
+};

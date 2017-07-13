@@ -1,5 +1,15 @@
 const Commando = require("discord.js-commando");
 
+function procinput(input) {
+    if (input % 3 === 0) {
+        return input / 3;
+    } else if (input % 3 === 1) {
+        return input - 1;
+    } else if (input % 3 === 2) {
+        return input + 1;
+    }
+}
+
 module.exports = class GetToOneCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -16,25 +26,19 @@ module.exports = class GetToOneCommand extends Commando.Command {
                 }
             ]
         });
-    };
+    }
 
     async run(msg, args) {
         let input = args.number;
         let buildString = input + ", ";
-        while (input != 1) {
-            if (input % 3 === 0) {
-                input = input / 3;
-            } else if (input % 3 === 1) {
-                input = input - 1;
-            } else if (input % 3 === 2) {
-                input = input + 1;
-            }
+        while (input !== 1) {
+            input = procinput(input)
             buildString += input;
-            if (input != 1) {
+            if (input !== 1) {
                 buildString += ", ";
             }
         }
 
         return msg.reply(buildString);
     }
-}
+};
