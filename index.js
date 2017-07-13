@@ -3,7 +3,7 @@ const Commando = require("discord.js-commando");
 const path = require("path");
 const token = require("./auth").token;
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const util = require("./util.js") //Load?
+const util = require("./util.js"); //Loads it
 
 const client = new Commando.Client({
     owner: "334612943230599168"

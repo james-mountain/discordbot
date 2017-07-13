@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const Util = require("../../util.js")
+const Util = require("../../util.js");
 
 module.exports = class OutputPersonCommand extends Commando.Command {
     constructor(client) {

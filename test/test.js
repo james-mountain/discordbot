@@ -1,5 +1,5 @@
 const Util = require("../util.js");
-const assert = require('assert');
+const assert = require("assert");
 
 describe("#discordbot", function() {
     describe("#fizzbuzz", function() {
@@ -8,7 +8,7 @@ describe("#discordbot", function() {
                 number: 15,
                 fizz: "Fizz",
                 buzz: "Buzz"
-            })
+            });
             assert.equal(fbstr, "1 | 2 | Fizz | 4 | Buzz | Fizz | 7 | 8 | Fizz | Buzz | 11 | Fizz | 13 | 14 | FizzBuzz | ");
             done();
         });
@@ -18,21 +18,21 @@ describe("#discordbot", function() {
         it("getting to one from a number should return a series of steps", function(done) {
             let fbstr = Util.getGetToOneString({
                 number: 15
-            })
+            });
             assert.equal(fbstr, "15, 5, 6, 2, 3, 1");
             done();
         });
     })
 
-    let client = {}
-    client.persons = []
+    let client = {};
+    client.persons = [];
     describe("#makeperson", function() {
         it("should be able to insert a new person into a some object (a client)", function(done) {
             Util.makePersonFunc(client, {
                 name: "John",
                 age: 30,
                 occu: "Developer"
-            })
+            });
 
             assert.equal(client.persons.length, 1);
             done();
@@ -43,7 +43,7 @@ describe("#discordbot", function() {
         it("should be able to output an inserted persons info", function(done) {
             let fbstr = Util.findPersonFunc(client, {
                 name: "John"
-            })
+            });
 
             assert.equal(fbstr, "Name: " + "John" + " Age: " + 30 + " Occupation: " + "Developer");
             done();
@@ -56,7 +56,7 @@ describe("#discordbot", function() {
                 atktype: "normal",
                 dmgtype: "steel",
                 dmgtype2: "rock"
-            })
+            });
 
             assert.equal(fbstr, 0.25);
             done();
@@ -67,7 +67,7 @@ describe("#discordbot", function() {
                 atktype: "electric",
                 dmgtype: "grass",
                 dmgtype2: "fire"
-            })
+            });
 
             assert.equal(fbstr, 0.5);
             done();
@@ -78,7 +78,7 @@ describe("#discordbot", function() {
         it("squaring 10 should return 100", function(done) {
             let fbstr = Util.squareFunc({
                 number: 10
-            })
+            });
 
             assert.equal(fbstr, 100);
             done();

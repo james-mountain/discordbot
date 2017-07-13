@@ -57,7 +57,7 @@ function procinput(input) {
 loadTypesFromFile();
 
 module.exports = {
-    getFizzBuzzString: function(args) {
+    getFizzBuzzString(args) {
         let buildString = "";
         for (let i = 1; i <= args.number; i++) {
             if (i % 3 === 0) {
@@ -75,7 +75,7 @@ module.exports = {
         return buildString;
     },
 
-    getGetToOneString: function(args) {
+    getGetToOneString(args) {
         let input = args.number;
         let buildString = input + ", ";
         while (input !== 1) {
@@ -89,7 +89,7 @@ module.exports = {
         return buildString;
     },
 
-    makePersonFunc: function(client, args) {
+    makePersonFunc(client, args) {
         let person = {};
 
         person.name = args.name;
@@ -99,7 +99,7 @@ module.exports = {
         client.persons[client.persons.length] = person;
     },
 
-    findPersonFunc: function(client, args) {
+    findPersonFunc(client, args) {
         let foundperson = client.persons.find((x) => x.name === args.name);
 
         if (foundperson) {
@@ -109,7 +109,7 @@ module.exports = {
         }
     },
 
-    pokemonDmgTypesFunc: function(args) {
+    pokemonDmgTypesFunc(args) {
         function getMultiAttackDmgIndex(atktype, deftype) {
             return typemultipliers[typenames.findIndex((v) => v === atktype)][typenames.findIndex((v) => v === deftype)];
         }
@@ -122,11 +122,11 @@ module.exports = {
         return multi;
     },
 
-    squareFunc: function(args) {
-        return args.number * args.number
+    squareFunc(args) {
+        return args.number * args.number;
     },
 
-    coinMarketCapPrice: function(args, callback) {
+    coinMarketCapPrice(args, callback) {
         let url = "https://api.coinmarketcap.com/v1/ticker/" + args.currency + "/";
         let request = new XMLHttpRequest();
         request.open("GET", url);
@@ -138,7 +138,7 @@ module.exports = {
         return request;
     },
 
-    weatherFunc: function(args, callback) {
+    weatherFunc(args, callback) {
         let url = "http://api.openweathermap.org/data/2.5/weather?q=" + args.city + "&appid=61e12b8fafc32ee19c827da95371aca8";
         let request = new XMLHttpRequest();
         request.open("GET", url);
@@ -150,7 +150,7 @@ module.exports = {
         return request;
     },
 
-    rollTheDiceFunc: function() {
-        Math.floor((Math.random() * 6) + 1)
+    rollTheDiceFunc() {
+        Math.floor((Math.random() * 6) + 1);
     }
-}
+};

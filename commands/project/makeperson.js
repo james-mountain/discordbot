@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const Util = require("../../util.js")
+const Util = require("../../util.js");
 
 module.exports = class MakePersonCommand extends Commando.Command {
     constructor(client) {
@@ -32,7 +32,7 @@ module.exports = class MakePersonCommand extends Commando.Command {
     }
 
     async run(msg, args) {
-        Util.makePersonFunc(this.client, args)
+        Util.makePersonFunc(this.client, args);
 
         return msg.reply("Created a person object.");
     }
