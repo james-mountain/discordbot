@@ -109,7 +109,7 @@ describe("#discordbot", function() {
             }, function() {
                 let data = JSON.parse(req.responseText);
 
-                assert.equal(data[0].name, "Bitcoin")
+                assert.equal(data[0].name, "Bitcoin");
                 done();
             });
         });
@@ -122,7 +122,7 @@ describe("#discordbot", function() {
             }, function() {
                 let data = JSON.parse(req.responseText);
 
-                assert.ok(data.weather[0].description)
+                assert.ok(data.weather[0].description);
                 done();
             });
         });
@@ -137,4 +137,4 @@ describe("#discordbot", function() {
             done();
         });
     });
-})
+});
