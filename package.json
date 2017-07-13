@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha"
+    "test": "nyc --reporter=lcov --reporter=text-lcov mocha",
+    "testcoverage": "nyc --reporter=lcov --reporter=text-lcov mocha | codacy-coverage"
   },
   "author": "",
   "license": "ISC",

@@ -15,11 +15,19 @@ describe("#discordbot", function() {
     });
 
     describe("#gettoone", function() {
-        it("getting to one from a number should return a series of steps", function(done) {
+        it("getting to one from 15 should return a series of steps", function(done) {
             let fbstr = Util.getGetToOneString({
                 number: 15
             });
             assert.equal(fbstr, "15, 5, 6, 2, 3, 1");
+            done();
+        });
+
+        it("getting to one from 253 should return a series of steps", function(done) {
+            let fbstr = Util.getGetToOneString({
+                number: 253
+            });
+            assert.equal(fbstr, "253, 252, 84, 28, 27, 9, 3, 1");
             done();
         });
     });
@@ -46,6 +54,15 @@ describe("#discordbot", function() {
             });
 
             assert.equal(fbstr, "Name: " + "John" + " Age: " + 30 + " Occupation: " + "Developer");
+            done();
+        });
+
+        it("should be able to display an error if no person is found", function(done) {
+            let fbstr = Util.findPersonFunc(client, {
+                name: "Test"
+            });
+
+            assert.equal(fbstr, "Could not find: " + "Test");
             done();
         });
     });
@@ -82,6 +99,32 @@ describe("#discordbot", function() {
 
             assert.equal(fbstr, 100);
             done();
+        });
+    });
+
+    describe("#coinmarketcapapi", function() {
+        it("asking about bitcoin should return data", function(done) {
+            let req = Util.coinMarketCapPrice({
+                currency: "bitcoin"
+            }, function() {
+                let data = JSON.parse(req.responseText);
+
+                assert.equal(data[0].name, "Bitcoin")
+                done();
+            });
+        });
+    });
+
+    describe("#weatherapi", function() {
+        it("asking about the weather in Manchester should return data", function(done) {
+            let req = Util.weatherFunc({
+                city: "manchester"
+            }, function() {
+                let data = JSON.parse(req.responseText);
+
+                assert.ok(data.weather[0].description)
+                done();
+            });
         });
     });
 })
