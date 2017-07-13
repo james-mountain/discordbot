@@ -1,4 +1,5 @@
 const Commando = require("discord.js-commando");
+const Util = require("../../util.js")
 
 module.exports = class FizzBuzzCommand extends Commando.Command {
     constructor(client) {
@@ -31,21 +32,6 @@ module.exports = class FizzBuzzCommand extends Commando.Command {
     }
 
     async run(msg, args) {
-        let buildString = "";
-        for (let i = 1; i <= args.number; i++) {
-            if (i % 3 === 0) {
-                buildString += args.fizz;
-            }
-            if (i % 5 === 0) {
-                buildString += args.buzz;
-            }
-            if (i % 3 !== 0 && i % 5 !== 0) {
-                buildString += i;
-            }
-
-            buildString += " | ";
-        }
-
-        return msg.reply(buildString);
+        return msg.reply(Util.getFizzBuzzString(args));
     }
 };

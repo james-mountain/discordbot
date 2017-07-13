@@ -1,4 +1,5 @@
 const Commando = require("discord.js-commando");
+const Util = require("../../util.js");
 
 module.exports = class RollTheDiceCommand extends Commando.Command {
     constructor(client) {
@@ -11,6 +12,6 @@ module.exports = class RollTheDiceCommand extends Commando.Command {
     }
 
     async run(msg, args) {
-        return msg.reply(Math.floor((Math.random() * 6) + 1));
+        return msg.reply(Util.rollTheDiceFunc());
     }
 };
