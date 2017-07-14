@@ -160,6 +160,15 @@ describe("#discordbot", function() {
             assert.equal(fbstr, 100);
             done();
         });
+
+        it("squaring an invalid number should return invalid arguments message", function(done) {
+            let fbstr = Util.squareFunc({
+                number: "not a number"
+            });
+
+            assert.equal(fbstr, "Invalid arguments.");
+            done();
+        });
     });
 
     describe("#coinmarketcapapi", function() {
@@ -172,7 +181,18 @@ describe("#discordbot", function() {
                 assert.equal(data[0].name, "Bitcoin");
                 done();
             });
-        }).timeout(5000);
+        }).timeout(4000);
+
+        it("asking about an invalid coin should return data showing it does not exist", function(done) {
+            let req = Util.coinMarketCapPrice({
+                currency: "invalid"
+            }, function() {
+                let data = JSON.parse(req.responseText);
+
+                assert.ok(data.error);
+                done();
+            });
+        }).timeout(4000);
     });
 
     describe("#weatherapi", function() {
@@ -183,6 +203,17 @@ describe("#discordbot", function() {
                 let data = JSON.parse(req.responseText);
 
                 assert.ok(data.weather[0].description);
+                done();
+            });
+        }).timeout(5000);
+
+        it("asking about invalid city weather should return error data", function(done) {
+            let req = Util.weatherFunc({
+                city: "|||"
+            }, function() {
+                let data = JSON.parse(req.responseText);
+
+                assert.equal(data.message, "city not found");
                 done();
             });
         }).timeout(5000);

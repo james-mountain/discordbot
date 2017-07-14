@@ -163,6 +163,10 @@ module.exports = {
     },
 
     squareFunc(args) {
+        if (typeof args.number !== "number") {
+            return "Invalid arguments.";
+        }
+
         return args.number * args.number;
     },
 
