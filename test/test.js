@@ -22,6 +22,16 @@ describe("#discordbot", function() {
             assert.equal(fbstr, "Invalid arguments.");
             done();
         });
+
+        it("it should return an error if too high an end point is used", function(done) {
+            let fbstr = Util.getFizzBuzzString({
+                number: 251,
+                fizz: "Fizz",
+                buzz: "Buzz"
+            });
+            assert.equal(fbstr, "End point is too high.");
+            done();
+        });
     });
 
     describe("#gettoone", function() {
@@ -46,6 +56,14 @@ describe("#discordbot", function() {
                 number: "not a number"
             });
             assert.equal(fbstr, "Invalid arguments.");
+            done();
+        });
+
+        it("it should return an error if too high an start point is used", function(done) {
+            let fbstr = Util.getGetToOneString({
+                number: 1000001
+            });
+            assert.equal(fbstr, "Starting point is too high.");
             done();
         });
     });
@@ -167,6 +185,15 @@ describe("#discordbot", function() {
             });
 
             assert.equal(fbstr, "Invalid arguments.");
+            done();
+        });
+
+        it("squaring too high of a number should return an error message", function(done) {
+            let fbstr = Util.squareFunc({
+                number: 50001
+            });
+
+            assert.equal(fbstr, "Number is too high.");
             done();
         });
     });

@@ -71,6 +71,8 @@ module.exports = {
     getFizzBuzzString(args) {
         if (typeof args.number !== "number" || typeof args.fizz !== "string" || typeof args.buzz !== "string") {
             return "Invalid arguments.";
+        } else if (args.number > 250) {
+            return "End point is too high.";
         }
 
         let buildString = "";
@@ -93,6 +95,8 @@ module.exports = {
     getGetToOneString(args) {
         if (typeof args.number !== "number") {
             return "Invalid arguments.";
+        } else if (args.number > 1000000) {
+            return "Starting point is too high.";
         }
 
         let input = args.number;
@@ -165,6 +169,8 @@ module.exports = {
     squareFunc(args) {
         if (typeof args.number !== "number") {
             return "Invalid arguments.";
+        } else if (args.number > 50000) {
+            return "Number is too high.";
         }
 
         return args.number * args.number;
