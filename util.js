@@ -189,7 +189,7 @@ module.exports = {
     kingGetInfo(args, callback) {
         let req = doAPICall("https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", function() {
             let data = JSON.parse(req.responseText);
-            let king = data.find((king) => king.nm == args.king);
+            let king = data.find((king) => king.nm === args.king);
 
             req.king = king;
 
