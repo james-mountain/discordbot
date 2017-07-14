@@ -32,8 +32,10 @@ module.exports = class MakePersonCommand extends Commando.Command {
     }
 
     async run(msg, args) {
-        Util.makePersonFunc(this.client, args);
-
-        return msg.reply("Created a person object.");
+        if (Util.makePersonFunc(this.client, args)) {
+            return msg.reply("Created a person object.");
+        } else {
+            return msg.reply("Invalid arguments.");
+        }
     }
 };

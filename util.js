@@ -58,6 +58,10 @@ loadTypesFromFile();
 
 module.exports = {
     getFizzBuzzString(args) {
+        if (typeof args.number !== "number" || typeof args.fizz !== "string" || typeof args.buzz !== "string") {
+            return "Invalid arguments.";
+        }
+
         let buildString = "";
         for (let i = 1; i <= args.number; i++) {
             if (i % 3 === 0) {
@@ -76,6 +80,10 @@ module.exports = {
     },
 
     getGetToOneString(args) {
+        if (typeof args.number !== "number") {
+            return "Invalid arguments.";
+        }
+
         let input = args.number;
         let buildString = input + ", ";
         while (input !== 1) {
@@ -90,6 +98,10 @@ module.exports = {
     },
 
     makePersonFunc(client, args) {
+        if (typeof args.name !== "string" || typeof args.age !== "number" || typeof args.occu !== "string") {
+            return false;
+        }
+
         let person = {};
 
         person.name = args.name;
@@ -97,6 +109,8 @@ module.exports = {
         person.occupation = args.occu;
 
         client.persons[client.persons.length] = person;
+
+        return true;
     },
 
     findPersonFunc(client, args) {
@@ -117,19 +131,19 @@ module.exports = {
             if (atkindex > -1 && defindex > -1) {
                 return typemultipliers[atkindex][defindex];
             } else {
-                return undefined;
+                return false;
             }
         }
 
         let multi = getMultiAttackDmgIndex(args.atktype, args.dmgtype);
         if (!multi) {
-            return undefined;
+            return false;
         }
 
         if (args.dmgtype2 !== "none") {
             let smulti = getMultiAttackDmgIndex(args.atktype, args.dmgtype2);
             if (!smulti) {
-                return undefined;
+                return false;
             }
             multi *= smulti;
         }

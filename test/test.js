@@ -3,13 +3,23 @@ const assert = require("assert");
 
 describe("#discordbot", function() {
     describe("#fizzbuzz", function() {
-        it("should return a fizz buzz sequence", function(done) {
+        it("should return a valid fizz buzz sequence if 15 Fizz Buzz arguments are used", function(done) {
             let fbstr = Util.getFizzBuzzString({
                 number: 15,
                 fizz: "Fizz",
                 buzz: "Buzz"
             });
             assert.equal(fbstr, "1 | 2 | Fizz | 4 | Buzz | Fizz | 7 | 8 | Fizz | Buzz | 11 | Fizz | 13 | 14 | FizzBuzz | ");
+            done();
+        });
+
+        it("it should return an error if invalid arguments are used", function(done) {
+            let fbstr = Util.getFizzBuzzString({
+                number: "not a number",
+                fizz: "Fizz",
+                buzz: "Buzz"
+            });
+            assert.equal(fbstr, "Invalid arguments.");
             done();
         });
     });
@@ -30,6 +40,14 @@ describe("#discordbot", function() {
             assert.equal(fbstr, "253, 252, 84, 28, 27, 9, 3, 1");
             done();
         });
+
+        it("it should return an error if invalid arguments are used", function(done) {
+            let fbstr = Util.getGetToOneString({
+                number: "not a number"
+            });
+            assert.equal(fbstr, "Invalid arguments.");
+            done();
+        });
     });
 
     let client = {};
@@ -43,6 +61,17 @@ describe("#discordbot", function() {
             });
 
             assert.equal(client.persons.length, 1);
+            done();
+        });
+
+        it("should not be able to take invalid arguments", function(done) {
+            let fbstr = Util.makePersonFunc(client, {
+                name: 3452343,
+                age: "not a number",
+                occu: "Developer"
+            });
+
+            assert.ok(!fbstr);
             done();
         });
     });
@@ -63,6 +92,15 @@ describe("#discordbot", function() {
             });
 
             assert.equal(fbstr, "Could not find: " + "Test");
+            done();
+        });
+
+        it("should still with an error operate even the arguments are of the wrong type", function(done) {
+            let fbstr = Util.findPersonFunc(client, {
+                name: 30
+            });
+
+            assert.equal(fbstr, "Could not find: " + 30);
             done();
         });
     });
@@ -134,7 +172,7 @@ describe("#discordbot", function() {
                 assert.equal(data[0].name, "Bitcoin");
                 done();
             });
-        });
+        }).timeout(5000);
     });
 
     describe("#weatherapi", function() {
@@ -147,7 +185,7 @@ describe("#discordbot", function() {
                 assert.ok(data.weather[0].description);
                 done();
             });
-        });
+        }).timeout(5000);
     });
 
     describe("#rollthedice", function() {
