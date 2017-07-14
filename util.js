@@ -22,6 +22,17 @@ const typenames = [
 ];
 let typemultipliers = [];
 
+function doAPICall(url, callback) {
+    let request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.responseType = "json";
+    request.send();
+
+    request.onload = callback;
+
+    return request;
+}
+
 function loadTypesFromFile() {
     for (let i = 0; i < typenames.length; i++) {
         var url = "./typedata/" + typenames[i] + ".json";
@@ -156,27 +167,11 @@ module.exports = {
     },
 
     coinMarketCapPrice(args, callback) {
-        let url = "https://api.coinmarketcap.com/v1/ticker/" + args.currency + "/";
-        let request = new XMLHttpRequest();
-        request.open("GET", url);
-        request.responseType = "json";
-        request.send();
-
-        request.onload = callback;
-
-        return request;
+        return doAPICall("https://api.coinmarketcap.com/v1/ticker/" + args.currency + "/", callback);
     },
 
     weatherFunc(args, callback) {
-        let url = "http://api.openweathermap.org/data/2.5/weather?q=" + args.city + "&appid=61e12b8fafc32ee19c827da95371aca8";
-        let request = new XMLHttpRequest();
-        request.open("GET", url);
-        request.responseType = "json";
-        request.send();
-
-        request.onload = callback;
-
-        return request;
+        return doAPICall("http://api.openweathermap.org/data/2.5/weather?q=" + args.city + "&appid=61e12b8fafc32ee19c827da95371aca8", callback);
     },
 
     rollTheDiceFunc() {
