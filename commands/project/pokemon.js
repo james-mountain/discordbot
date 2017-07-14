@@ -33,6 +33,11 @@ module.exports = class PokemonCommand extends Commando.Command {
     }
 
     async run(msg, args) {
-        return msg.reply(Util.pokemonDmgTypesFunc(args) + "x");
+        let dmgtypesfunc = Util.pokemonDmgTypesFunc(args);
+        if (dmgtypesfunc) {
+            return msg.reply(dmgtypesfunc + "x");
+        } else {
+            return msg.reply("Invalid damage types.");
+        }
     }
 };

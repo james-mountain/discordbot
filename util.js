@@ -111,12 +111,27 @@ module.exports = {
 
     pokemonDmgTypesFunc(args) {
         function getMultiAttackDmgIndex(atktype, deftype) {
-            return typemultipliers[typenames.findIndex((v) => v === atktype)][typenames.findIndex((v) => v === deftype)];
+            let atkindex = typenames.findIndex((v) => v === atktype);
+            let defindex = typenames.findIndex((v) => v === deftype);
+
+            if (atkindex > -1 && defindex > -1) {
+                return typemultipliers[atkindex][defindex];
+            } else {
+                return undefined;
+            }
         }
 
         let multi = getMultiAttackDmgIndex(args.atktype, args.dmgtype);
+        if (!multi) {
+            return undefined;
+        }
+
         if (args.dmgtype2 !== "none") {
-            multi *= getMultiAttackDmgIndex(args.atktype, args.dmgtype2);
+            let smulti = getMultiAttackDmgIndex(args.atktype, args.dmgtype2);
+            if (!smulti) {
+                return undefined;
+            }
+            multi *= smulti;
         }
 
         return multi;

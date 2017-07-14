@@ -89,6 +89,28 @@ describe("#discordbot", function() {
             assert.equal(fbstr, 0.5);
             done();
         });
+
+        it("blah attack versus fire edsd pokemon", function(done) {
+            let fbstr = Util.pokemonDmgTypesFunc({
+                atktype: "blah",
+                dmgtype: "fire",
+                dmgtype2: "edsd"
+            });
+
+            assert.ok(!fbstr);
+            done();
+        });
+
+        it("ghost attack versus water blah pokemon", function(done) {
+            let fbstr = Util.pokemonDmgTypesFunc({
+                atktype: "ghost",
+                dmgtype: "water",
+                dmgtype2: "blah"
+            });
+
+            assert.ok(!fbstr);
+            done();
+        });
     });
 
     describe("#square", function() {
