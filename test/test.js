@@ -198,6 +198,27 @@ describe("#discordbot", function() {
         });
     });
 
+    describe("#findking", function() {
+        it("finding a king", function(done) {
+            let req = Util.kingGetInfo({
+                query: "Harthacanut"
+            }, function() {
+                assert.equal(req.king.cty, "United Kingdom");
+                done();
+            });
+
+        });
+
+        it("finding an invalid king", function(done) {
+            let req = Util.kingGetInfo({
+                query: "fake king"
+            }, function() {
+                assert.ok(!req.king);
+                done();
+            });
+        });
+    });
+
     describe("#coinmarketcapapi", function() {
         it("asking about bitcoin should return data", function(done) {
             let req = Util.coinMarketCapPrice({

@@ -67,6 +67,8 @@ function procinput(input) {
 }
 loadTypesFromFile();
 
+let kingsRequest =
+
 module.exports = {
     getFizzBuzzString(args) {
         if (typeof args.number !== "number" || typeof args.fizz !== "string" || typeof args.buzz !== "string") {
@@ -182,6 +184,19 @@ module.exports = {
 
     weatherFunc(args, callback) {
         return doAPICall("http://api.openweathermap.org/data/2.5/weather?q=" + args.city + "&appid=61e12b8fafc32ee19c827da95371aca8", callback);
+    },
+
+    kingGetInfo(args, callback) {
+        let req = doAPICall("https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", function() {
+            let data = JSON.parse(req.responseText);
+            let king = data.find((king) => king.nm == args.king);
+
+            req.king = king;
+
+            callback();
+        });
+
+        return req;
     },
 
     rollTheDiceFunc() {
